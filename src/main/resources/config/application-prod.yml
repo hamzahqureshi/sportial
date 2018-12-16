@@ -13,6 +13,10 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+discovery:
+    server:
+        appName: heroku-jhipster-registery.herokuapp.com
+
 logging:
     level:
         ROOT: INFO
@@ -21,10 +25,12 @@ logging:
 
 eureka:
     instance:
-        prefer-ip-address: true
+        hostname: heroku-jhipster-registery.herokuapp.com
+        non-secure-port: 80
+        prefer-ip-address: false
     client:
         service-url:
-            defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+            defaultZone: http://admin:${jhipster.registry.password}@heroku-jhipster-registery.herokuapp.com/eureka/
 
 spring:
     devtools:
@@ -35,8 +41,8 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/sportial
-        username: sportial
-        password:
+        username: postgres
+        password: 12345
         hikari:
             auto-commit: false
     jpa:
